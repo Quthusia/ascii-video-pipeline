@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced ASCII Security Pipeline</title>
+    <style>
+        body {
+            background-color: #050505;
+            color: #ffffff;
+            font-family: monospace;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            transition: background-color 0.2s ease;
+        }
+        /* Dashboard Control Bar */
+        .controls {
+            margin-bottom: 15px;
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+        select {
+            background: #111;
+            color: #fff;
+            border: 1px solid #333;
+            padding: 8px 12px;
+            font-family: monospace;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        .status-badge {
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-weight: bold;
+            background: #222;
+        }
+        /* Color Themes Linked to Backend Choices */
+        .theme-matrix { color: #00ff66; text-shadow: 0 0 5px rgba(0,255,102,0.3); }
+        .theme-cyberpunk { color: #ff007f; text-shadow: 0 0 5px rgba(255,0,127,0.3); }
+        .theme-amber { color: #ffb000; text-shadow: 0 0 5px rgba(255,176,0,0.3); }
+        
+        pre {
+            font-size: 10px;
+            line-height: 8px;
+            font-weight: bold;
+            background-color: #000000;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #222;
+            white-space: pre;
+        }
+        /* Deep red flash animation for the security alert */
+        .alarm-active {
+            background-color: #4a0000 !important;
+        }
+    </style>
+</head>
+<body class="theme-matrix">
+
+    <div class="controls">
+        <!-- Theme Dropdown Selector Menu -->
+        <select id="themeSelector">
+            <option value="matrix">Matrix Green</option>
+            <option value="cyberpunk">Cyberpunk Neon</option>
+            <option value="amber">Vintage Amber</option>
+        </select>
+        <!-- Security System Status Display -->
+        <div id="motionAlert" class="status-badge">SENSOR STATUS: SECURE</div>
+    </div>
+
+    <!-- The actual screen container showing the live ASCII art -->
+    <pre id="ascii-screen">Initializing secure visual streams...</pre>
+
+    <script>
+        const screen = document.getElementById("ascii-screen");
+        const themeSelector = document.getElementById("themeSelector");
+        const motionAlert = document.getElementById("motionAlert");
+        const body = document.body;
+
+        // 1. Setup the electronic buzzer synthesizer sound engine
+        let audioCtx = null;
+        function playSiren() {
+            if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            let oscillator = audioCtx.createOscillator();
+            let gainNode = audioCtx.createGain();
+            
+            oscillator.type = 'sawtooth'; 
+            oscillator.frequency.setValueAtTime(600, audioCtx.currentTime); 
+            gainNode.gain.setValueAtTime(0.08, audioCtx.currentTime); // Safe, lower volume level
+            
+            oscillator.connect(gainNode);
+            gainNode.connect(audioCtx.destination);
+            oscillator.start();
+            oscillator.stop(audioCtx.currentTime + 0.12); // Short 120ms sharp beep
+        }
+
+        // 2. Establish our network pipeline connection to Python FastAPI
+        const socket = new WebSocket("ws://127.0.0.1:8000/stream");
+
+        // 3. Inform Python instantly when a user toggles the Theme options
+        themeSelector.addEventListener("change", (e) => {
+            socket.send("THEME:" + e.target.value);
+        });
+
+        // 4. Continually parse combined data streams forwarded from Python
+        socket.onmessage = function(event) {
+            const parts = event.data.split("|");
+            const isMotion = parts[0] === "true";
+            const currentTheme = parts[1];
+            const textArt = parts[2];
+
+            // Render themes and text images dynamically
+            body.className = "theme-" + currentTheme;
+            screen.textContent = textArt;
+
+            // Trigger alarms if hardware delta limits are exceeded
+            if (isMotion) {
+                body.classList.add("alarm-active");
+                motionAlert.textContent = "⚠️ MOTION DETECTED ⚠️";
+                motionAlert.style.color = "#ff3333";
+                playSiren(); 
+            } else {
+                body.classList.remove("alarm-active");
+                motionAlert.textContent = "SENSOR STATUS: SECURE";
+                motionAlert.style.color = "#00ff66";
+            }
+        };
+
+        socket.onerror = () => { screen.textContent = "Fatal backend network error."; };
+    </script>
+</body>
+</html>
