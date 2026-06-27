@@ -2,6 +2,8 @@
 
 An end-to-end, ultra-low latency data processing pipeline that captures real-time video frames from hardware webcam devices, transforms raw pixel arrays into stylized ASCII character matrices using computer vision heuristics, and streams data asynchronously to an interactive browser frontend.
 
+![Real-Time ASCII Pipeline Demo](demo.gif)
+
 ---
 
 ## 🎯 Technical Case & Architectural Objective
