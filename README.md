@@ -2,8 +2,7 @@
 
 An end-to-end, ultra-low latency data processing pipeline that captures real-time video frames and acoustic frequencies from local hardware devices, transforms multi-dimensional raw arrays into stylized ASCII text matrices via computer vision heuristics, and streams reactive data patterns asynchronously to an interactive browser frontend.
 
-<!-- DRAG AND DROP YOUR MP4 VIDEO FILE DIRECTLY ON THE LINE BELOW -->
-<video src="PASTE_YOUR_GITHUB_GENERATED_VIDEO_URL_HERE" width="100%" controls></video>
+![Real-Time ASCII Pipeline Demo](demo.gif)
 
 ---
 
