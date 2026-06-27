@@ -1,43 +1,43 @@
-# 🎬 Advanced ASCII Security Pipeline: Asynchronous Video Streaming & Text Rendering Engine
+# 🎬 Advanced ASCII Security Pipeline: Asynchronous Video Streaming & Audio Processing Engine
 
-An end-to-end, ultra-low latency data processing pipeline that captures real-time video frames from hardware webcam devices, transforms raw pixel arrays into stylized ASCII character matrices using computer vision heuristics, and streams data asynchronously to an interactive browser frontend.
+An end-to-end, ultra-low latency data processing pipeline that captures real-time video frames and acoustic frequencies from local hardware devices, transforms multi-dimensional raw arrays into stylized ASCII text matrices via computer vision heuristics, and streams reactive data patterns asynchronously to an interactive browser frontend.
 
-![Real-Time ASCII Pipeline Demo](demo.gif)
+<!-- DRAG AND DROP YOUR MP4 VIDEO FILE DIRECTLY ON THE LINE BELOW -->
+<video src="PASTE_YOUR_GITHUB_GENERATED_VIDEO_URL_HERE" width="100%" controls></video>
 
 ---
 
 ## 🎯 Technical Case & Architectural Objective
-Streaming live video data over standard HTTP protocols introduces major rendering bottlenecks due to heavy packet overhead and synchronous request-reply blocking. This latency makes real-time, terminal-style rendering completely unfeasible for monitoring dashboards or interactive security displays.
+Streaming live high-definition video alongside concurrent audio capturing over synchronous HTTP protocols introduces immediate processing bottlenecks. Standard request-reply paradigms experience critical packet drop and rendering latency, rendering real-time terminal-style visualization blocks completely unviable for monitoring dashboards or interactive telemetry displays.
 
-**The Solution:** This architecture replaces legacy polling methods with an asynchronous event-driven layout. By establishing a permanent bi-directional communication layer, a Python processing script captures webcam arrays frame-by-frame, down-samples the color grid to match character densities, and pushes the text streams instantly to a lightweight web layout with zero frame-dropping.
+**The Solution:** This architecture utilizes an asynchronous, event-driven network configuration. By opening concurrent communication layers via WebSockets, a Python ingestion backend pulls webcam pixel data and local sound amplitude variations in parallel. The engine down-samples color matrices to match typographic densities, layers visual layouts dynamically against environmental acoustic spikes, and flushes characters directly to a lightweight browser layout with zero thread-blocking.
 
 ---
 
 ## 🧠 Key Features & Technical Architecture
 
-### 1. Asynchronous WebSocket Communication Layer
-* Built completely on a native web-protocol foundation, eliminating standard HTTP polling delays.
-* Handles instant connection state cycles, logging `"WebSocket /stream [accepted]"` and establishing a continuous data highway for real-time string delivery.
+### 1. Asynchronous WebSocket Audio-Video Highway
+* Operates over high-performance persistent connection layouts, bypassing traditional polling overhead.
+* Handles concurrent transmission pipelines, pushing continuous visual string structures alongside serialized audio amplitude markers over a unified connection frame.
 
-### 2. Computer Vision Optimization Engine
-* Leverages localized image manipulation frames inside pure Python, stripping out bulky external graphic rendering libraries.
-* Programmatically parses incoming pixel data matrices to execute three real-time transformations:
-  * **Frame Down-sampling:** Scales complex 1080p webcam frames into manageable terminal character grids.
-  * **Luminance Character Mapping:** Converts pixel intensity values into corresponding typographic ASCII weight layers.
-  * **Style Matrix Routing:** Dynamically shifts style presets (e.g., *Matrix Green* or monochrome) across client displays.
+### 2. Computer Vision & Acoustic Calibration Engine
+* Leverages localized structural array processing inside pure Python, avoiding heavy visual computation layers.
+* Executes three simultaneous algorithmic transformations on system input data:
+  * **Frame Down-sampling:** Scales complex webcam resolutions down into manageable fixed-width character maps.
+  * **Luminance Typographic Mapping:** Translates pixel color weights into strategic typographic characters based on optical surface area.
+  * **Acoustic Amplitude Sensitivity:** Monitors sound sensor array thresholds to alter matrix rendering states, scale font dimensions, or highlight character rows during audio peaks.
 
-### 3. Lightweight Reactive UI Terminal Dashboard
-* Code-first web interface crafted in clean HTML5, CSS3, and modern vanilla JavaScript.
-* Built-in security perimeter isolation allowing localized script processing without introducing tracking tokens.
-* Features responsive rendering layouts designed specifically to display fixed-width monospace font data smoothly.
+### 3. State-Driven UI Terminal Panel
+* Structured cleanly in semantic HTML5, fluid responsive CSS3 layouts, and modern event-driven JavaScript.
+* Built-in client-side browser isolation to prevent computational redundancies or tracking leakage during high-frequency element flashes.
 
 ---
 
 ## 💻 Tech Stack & Tools
 * **Programming Language:** Python 3.10+
 * **Asynchronous Server Network:** FastAPI, Uvicorn ASGI Server
-* **Computer Vision Heuristics:** OpenCV (`opencv-python`)
-* **Frontend Rendering UI:** HTML5, CSS3, JavaScript (WebSockets API)
+* **Signal Processing & CV Heuristics:** OpenCV (`opencv-python`)
+* **Frontend Rendering UI:** HTML5, CSS3, JavaScript (WebSockets API, Web Audio API)
 * **Development Workspace:** Visual Studio Code (VS Code)
 
 ---
@@ -47,15 +47,15 @@ The streaming pipeline coordinates three distinct processing nodes to ensure a p
 
 | Layer Name | Technology | Operational Responsibility | Protocol / Target |
 | :--- | :--- | :--- | :--- |
-| **Data Ingestion** | OpenCV / Python | Opens hardware camera, captures frames, maps matrix buffers | Local System Hardware |
-| **Transform Layer** | FastAPI / Uvicorn | Processes pixels to ASCII text string arrays, handles ASGI loops | `ws://127.0.0.1:8000/stream` |
-| **Client UI Display** | Vanilla JS / CSS | Listens for text chunks, modifies DOM text areas dynamically | Native Browser Interface |
+| **Data Ingestion** | OpenCV / PyAudio / Web APIs | Initializes hardware camera and audio sensors, buffers telemetry arrays | Local Workspace Hardware |
+| **Transform Layer** | FastAPI / Uvicorn | Maps raw telemetry inputs to ASCII font weights, runs concurrent ASGI loop | `ws://127.0.0.1:8000/stream` |
+| **Client UI Display** | Vanilla JS / CSS3 | Parses binary/text payloads, modifies DOM tree structures dynamically | Native Browser Interface |
 
 ---
 
 ## 🚀 Local Installation & Deployment
 
-To execute this real-time video system on your local workstation, run the following sequential commands in your terminal:
+To execute this real-time system on your local workstation, run the following sequential commands in your terminal:
 
 ```bash
 # 1. Access your project directory
